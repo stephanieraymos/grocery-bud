@@ -10,7 +10,16 @@ function App() {
   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Testing");
+    if (!name) {
+      // display alert if value is empty
+    } else if (name && isEditing) {
+      // deal with edit if something is in value and user is editing
+    } else {
+      // Show alert
+      const newItem = { id: new Date().getTime().toString(), title: name };
+      setList([...list, newItem]);
+      setName("");
+    }
   };
 
   return (
@@ -32,7 +41,7 @@ function App() {
         </div>
       </form>
       <div className="grocery-container">
-        <List />
+        <List items={list}/>
         <button className="clear-btn">Clear items</button>
       </div>
     </section>
