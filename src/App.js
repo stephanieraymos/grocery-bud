@@ -32,6 +32,11 @@ function App() {
     setList([]);
   };
 
+  const removeItem = (id) => {
+    showAlert(true, "danger", "Item Removed");
+    setList(list.filter((item) => item.id !== id)); //If item id does not match then it will be added to new array, if it does match; i won't get returned + won't be displayed
+  };
+
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
@@ -52,8 +57,10 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list} />
-          <button className="clear-btn" onClick={clearList}>Clear items</button>
+          <List items={list} removeItem={removeItem}/>
+          <button className="clear-btn" onClick={clearList}>
+            Clear items
+          </button>
         </div>
       )}
     </section>
