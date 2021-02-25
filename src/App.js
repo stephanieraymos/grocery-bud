@@ -16,6 +16,7 @@ function App() {
       // deal with edit if something is in value and user is editing
     } else {
       // Show alert and add item to list only if name is true and not editing
+      showAlert(true, "success", "Item Added");
       const newItem = { id: new Date().getTime().toString(), title: name };
       setList([...list, newItem]);
       setName(""); //Reseting input box to empty string
@@ -29,7 +30,7 @@ function App() {
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert}/>}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
         <h3>Grocery Bud</h3>
         <div className="form-control">
           <input
