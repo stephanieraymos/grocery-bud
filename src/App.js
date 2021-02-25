@@ -14,6 +14,14 @@ function App() {
       showAlert(true, "danger", "Please enter value");
     } else if (name && isEditing) {
       // deal with edit if something is in value and user is editing
+      setList(
+        list.map((item) => {
+          if (item.id === editId) {
+            return { ...item, title: name };
+          }
+          return item;
+        })
+      );
     } else {
       // Show alert and add item to list only if name is true and not editing
       showAlert(true, "success", "Item Added");
@@ -65,7 +73,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list} removeItem={removeItem} editItem={editItem}/>
+          <List items={list} removeItem={removeItem} editItem={editItem} />
           <button className="clear-btn" onClick={clearList}>
             Clear items
           </button>
