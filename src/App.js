@@ -37,10 +37,18 @@ function App() {
     setList(list.filter((item) => item.id !== id)); //If item id does not match then it will be added to new array, if it does match; i won't get returned + won't be displayed
   };
 
+  const editItem = (id) => {
+    showAlert(true, "success", "Item Edit Successful");
+    const specificItem = list.find((item) => item.id === id);
+    setIsEditing(true);
+    setEditId(id);
+    setName(specificItem.title);
+  };
+
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list}/>}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <h3>Grocery Bud</h3>
         <div className="form-control">
           <input
@@ -57,7 +65,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list} removeItem={removeItem}/>
+          <List items={list} removeItem={removeItem} editItem={editItem}/>
           <button className="clear-btn" onClick={clearList}>
             Clear items
           </button>
