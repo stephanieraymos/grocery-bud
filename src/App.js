@@ -22,6 +22,10 @@ function App() {
           return item;
         })
       );
+      setName("");
+      setEditId(null);
+      setIsEditing(false);
+      showAlert(true, "success", "Item Edited")
     } else {
       // Show alert and add item to list only if name is true and not editing
       showAlert(true, "success", "Item Added");
