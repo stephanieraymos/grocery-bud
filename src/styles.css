@@ -266,6 +266,7 @@ main {
   font-size: 0.7rem;
   margin: 0 0.15rem;
   transition: var(--transition);
+  outline: none;
 }
 .edit-btn {
   color: var(--clr-green-light);
