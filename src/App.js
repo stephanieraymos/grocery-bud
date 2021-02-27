@@ -59,7 +59,6 @@ function App() {
   };
 
   const editItem = (id) => {
-    showAlert(true, "success", "Item Edit Successful");
     const specificItem = list.find((item) => item.id === id);
     setIsEditing(true);
     setEditId(id);
